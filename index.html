@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>İçeriks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:       #FAFAF7;
+      --green:    #7BAE7F;
+      --green-dk: #5C9160;
+      --green-lt: #EBF4EC;
+      --peach:    #FFCBA4;
+      --peach-dk: #E8A070;
+      --peach-lt: #FFF4EC;
+      --text:     #1C1C1A;
+      --t2:       #6B6B65;
+      --t3:       #AEAEA6;
+      --line:     #EDEDЕ8;
+      --red:      #C94040;
+      --orange:   #D4763A;
+      --white:    #FFFFFF;
+      --r:        16px;
+      --r-lg:     24px;
+      --sh:       0 8px 40px rgba(0,0,0,.07);
+      --sh-sm:    0 2px 14px rgba(0,0,0,.04);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg);
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='100' viewBox='0 0 60 100' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='3' y='0' width='2' height='100' fill='%237BAE7F' opacity='0.032'/%3E%3Crect x='8' y='0' width='1' height='100' fill='%237BAE7F' opacity='0.022'/%3E%3Crect x='12' y='0' width='3' height='100' fill='%237BAE7F' opacity='0.028'/%3E%3Crect x='18' y='0' width='1' height='100' fill='%237BAE7F' opacity='0.018'/%3E%3Crect x='22' y='0' width='2' height='100' fill='%237BAE7F' opacity='0.028'/%3E%3Crect x='27' y='0' width='1' height='100' fill='%237BAE7F' opacity='0.022'/%3E%3Crect x='31' y='0' width='4' height='100' fill='%237BAE7F' opacity='0.032'/%3E%3Crect x='38' y='0' width='1' height='100' fill='%237BAE7F' opacity='0.018'/%3E%3Crect x='42' y='0' width='2' height='100' fill='%237BAE7F' opacity='0.028'/%3E%3Crect x='47' y='0' width='3' height='100' fill='%237BAE7F' opacity='0.032'/%3E%3Crect x='53' y='0' width='1' height='100' fill='%237BAE7F' opacity='0.018'/%3E%3Crect x='57' y='0' width='2' height='100' fill='%237BAE7F' opacity='0.026'/%3E%3C/svg%3E");
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 100vh;
+      padding: 60px 24px 70px;
+      text-align: center;
+      transition: min-height .5s ease, padding .5s ease;
+    }
+
+    .logo-mark {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .logo-svg { width: 54px; height: 54px; flex-shrink: 0; }
+
+    .logo-word {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.6rem;
+      font-weight: 300;
+      letter-spacing: -2px;
+      color: var(--text);
+      line-height: 1;
+    }
+    .logo-word span { color: var(--green); }
+
+    .slogan {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--t2);
+      margin-bottom: 52px;
+      letter-spacing: 0.1px;
+    }
+
+    /* Arama */
+    .search-wrap { width: 100%; max-width: 500px; }
+
+    .pill-group {
+      display: flex;
+      background: var(--white);
+      border: 1px solid #E4E4DE;
+      border-radius: 100px;
+      box-shadow: var(--sh);
+      overflow: hidden;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .pill-group:focus-within {
+      border-color: var(--green);
+      box-shadow: 0 8px 40px rgba(123,174,127,.18);
+    }
+
+    #urun-input {
+      flex: 1;
+      border: none; background: transparent;
+      padding: 17px 22px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.93rem; font-weight: 300;
+      color: var(--text); outline: none;
+    }
+    #urun-input::placeholder { color: var(--t3); }
+
+    #analiz-btn {
+      background: var(--green); color: var(--white);
+      border: none; border-radius: 100px;
+      margin: 5px; padding: 12px 26px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.86rem; font-weight: 500;
+      letter-spacing: 0.2px;
+      cursor: pointer; white-space: nowrap;
+      transition: background .2s, transform .1s;
+      flex-shrink: 0;
+    }
+    #analiz-btn:hover    { background: var(--green-dk); }
+    #analiz-btn:active   { transform: scale(.97); }
+    #analiz-btn:disabled { background: #B5CEB7; cursor: not-allowed; }
+
+    /* ── Yükleniyor ── */
+    #yukleniyor {
+      display: none; flex-direction: column;
+      align-items: center; gap: 16px;
+      padding: 56px 0;
+      color: var(--t2); font-size: 0.86rem; font-weight: 300;
+    }
+    .ring {
+      width: 42px; height: 42px;
+      border: 2px solid #E2E2DC;
+      border-top-color: var(--green);
+      border-radius: 50%;
+      animation: spin .85s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Hata ── */
+    #hata {
+      display: none;
+      max-width: 480px; width: 100%;
+      margin: 12px 0;
+      padding: 14px 20px;
+      background: #FDF0F0; border: 1px solid #F0CCCC;
+      border-radius: var(--r);
+      color: var(--red); font-size: 0.84rem; text-align: center;
+    }
+
+    /* ── Sonuç ── */
+    #sonuc {
+      display: none;
+      width: 100%;
+      padding: 0 24px 90px;
+      animation: up .5s cubic-bezier(.22,.68,0,1.1);
+    }
+    @keyframes up {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .sonuc-inner { max-width: 1080px; margin: 0 auto; }
+
+    /* Banner */
+    .banner {
+      display: flex; align-items: center; gap: 22px;
+      background: var(--white);
+      border: 1px solid #EEEEE9;
+      border-radius: var(--r-lg);
+      box-shadow: var(--sh-sm);
+      padding: 30px 34px;
+      margin-bottom: 18px;
+    }
+
+    .banner-emoji { font-size: 2.9rem; line-height: 1; flex-shrink: 0; }
+
+    .banner-meta { flex: 1; }
+
+    .kat-tag {
+      display: inline-block;
+      font-size: 0.66rem; font-weight: 500;
+      letter-spacing: 1.1px; text-transform: uppercase;
+      color: var(--green-dk); background: var(--green-lt);
+      border-radius: 100px; padding: 3px 11px;
+      margin-bottom: 7px;
+    }
+
+    .urun-isim {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem; font-weight: 400;
+      letter-spacing: -0.4px; line-height: 1.15;
+      color: var(--text);
+    }
+
+    .urun-acik {
+      font-size: 0.84rem; font-weight: 300;
+      color: var(--t2); margin-top: 5px; line-height: 1.55;
+    }
+
+    /* Puan halka */
+    .puan-blok { display: flex; flex-direction: column; align-items: center; gap: 6px; flex-shrink: 0; }
+
+    .puan-svg-wrap { position: relative; width: 72px; height: 72px; }
+    .puan-svg-wrap svg { transform: rotate(-90deg); }
+    .p-bg   { fill: none; stroke: #EEEEE9; stroke-width: 5; }
+    .p-fill { fill: none; stroke: var(--green); stroke-width: 5; stroke-linecap: round; transition: stroke-dashoffset .9s ease, stroke .4s; }
+    .puan-txt {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 400; color: var(--green);
+    }
+    .puan-lbl { font-size: 0.68rem; font-weight: 300; color: var(--t3); letter-spacing: 0.3px; }
+
+    /* Grid */
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+    /* Panel */
+    .panel {
+      background: var(--white);
+      border: 1px solid #EEEEE9;
+      border-radius: var(--r-lg);
+      box-shadow: var(--sh-sm);
+      overflow: hidden;
+    }
+
+    .panel-head {
+      display: flex; align-items: center; gap: 10px;
+      padding: 20px 26px 16px;
+      border-bottom: 1px solid #F3F3EE;
+    }
+
+    .head-ico {
+      width: 30px; height: 30px; border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem; flex-shrink: 0;
+    }
+    .ico-g { background: var(--green-lt); }
+    .ico-p { background: var(--peach-lt); }
+
+    .panel-ttl {
+      font-size: 0.73rem; font-weight: 500;
+      letter-spacing: 0.8px; text-transform: uppercase;
+      color: var(--t2);
+    }
+
+    .panel-body { padding: 18px 26px 24px; }
+
+    /* İçerik satırları */
+    .grup { margin-bottom: 18px; }
+    .grup:last-child { margin-bottom: 0; }
+
+    .grup-lbl {
+      font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: var(--t3); padding-bottom: 8px;
+      border-bottom: 1px solid #F3F3EE; margin-bottom: 8px;
+    }
+
+    .satir {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 7px 0; border-bottom: 1px solid #F8F8F5;
+    }
+    .satir:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+    .d-r { background: var(--red); }
+    .d-o { background: var(--orange); }
+    .d-g { background: var(--green); }
+
+    .satir-ic { flex: 1; }
+    .satir-ad { font-size: 0.86rem; font-weight: 400; color: var(--text); }
+    .satir-acik { font-size: 0.77rem; font-weight: 300; color: var(--t2); margin-top: 2px; line-height: 1.45; }
+
+    .bdg {
+      font-size: 0.62rem; font-weight: 500;
+      letter-spacing: 0.2px; padding: 2px 8px;
+      border-radius: 100px; flex-shrink: 0; margin-top: 3px;
+    }
+    .b-r { background: #FDF0F0; color: var(--red); }
+    .b-o { background: #FDF5EE; color: var(--orange); }
+    .b-g { background: var(--green-lt); color: var(--green-dk); }
+
+    /* Alternatif */
+    .alt-item {
+      display: flex; align-items: flex-start; gap: 13px;
+      padding: 13px 0; border-bottom: 1px solid #F8F8F5;
+    }
+    .alt-item:last-of-type { border-bottom: none; padding-bottom: 0; }
+    .alt-em  { font-size: 1.55rem; line-height: 1; flex-shrink: 0; margin-top: 1px; }
+    .alt-ad  { font-size: 0.88rem; font-weight: 500; color: var(--text); }
+    .alt-neden { font-size: 0.79rem; font-weight: 300; color: var(--t2); margin-top: 3px; line-height: 1.5; }
+
+    .alt-kapanıs {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 0.95rem;
+      color: var(--peach-dk); text-align: center;
+      margin-top: 16px; line-height: 1.5;
+    }
+
+    .alt-loading {
+      display: flex; align-items: center; gap: 9px;
+      color: var(--t3); font-size: 0.81rem; font-weight: 300; padding: 8px 0;
+    }
+    .mini-ring {
+      width: 17px; height: 17px;
+      border: 1.5px solid #E8E8E2;
+      border-top-color: var(--peach-dk);
+      border-radius: 50%;
+      animation: spin .85s linear infinite; flex-shrink: 0;
+    }
+
+    /* Tekrar */
+    .tekrar-row { display: flex; justify-content: center; margin-top: 34px; }
+    #tekrar-btn {
+      display: flex; align-items: center; gap: 8px;
+      background: transparent; border: 1px solid #DCDCD6;
+      color: var(--t2);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.82rem; font-weight: 400;
+      padding: 11px 24px; border-radius: 100px;
+      cursor: pointer; transition: all .2s;
+    }
+    #tekrar-btn:hover { border-color: var(--green); color: var(--green); }
+
+    footer {
+      padding: 0 0 28px;
+      font-size: 0.7rem; color: var(--t3); letter-spacing: 0.2px;
+    }
+
+    @media (max-width: 680px) {
+      .grid2 { grid-template-columns: 1fr; }
+      .banner { flex-wrap: wrap; gap: 14px; padding: 22px 20px; }
+      .logo-word { font-size: 2.8rem; }
+      .panel-body { padding: 16px 18px 20px; }
+      .panel-head { padding: 16px 18px 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="logo-mark">
+      <svg class="logo-svg" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2"  y="17" width="2.5" height="25" rx="1.2" fill="#7BAE7F"/>
+        <rect x="7"  y="17" width="1.2" height="25" rx=".6"  fill="#5C9160"/>
+        <rect x="11" y="17" width="3.5" height="25" rx="1.2" fill="#7BAE7F"/>
+        <rect x="17" y="17" width="1"   height="25" rx=".5"  fill="#5C9160"/>
+        <rect x="21" y="17" width="2.5" height="25" rx="1.2" fill="#7BAE7F"/>
+        <rect x="26" y="17" width="1.2" height="25" rx=".6"  fill="#5C9160"/>
+        <rect x="30" y="17" width="3"   height="25" rx="1.2" fill="#7BAE7F"/>
+        <path d="M42 14 C42 6, 51 4, 51 4 C51 4, 51 12, 42 14Z" fill="#7BAE7F"/>
+        <path d="M42 14 C46 9, 51 4, 51 4" stroke="#5C9160" stroke-width="1" fill="none"/>
+        <line x1="42" y1="14" x2="42" y2="42" stroke="#7BAE7F" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <h1 class="logo-word">içeri<span>ks</span></h1>
+    </div>
+
+    <p class="slogan">Yediğini anlamanın kolay yolu.</p>
+
+    <div class="search-wrap">
+      <div class="pill-group">
+        <input id="urun-input" type="text"
+          placeholder="Ürün adı girin… Nutella, Red Bull, Lays"
+          autocomplete="off" />
+        <button id="analiz-btn" onclick="analiz()">Analiz Et</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- YÜKLENIYOR -->
+  <div id="yukleniyor">
+    <div class="ring"></div>
+    <span>Analiz ediliyor…</span>
+  </div>
+
+  <!-- HATA -->
+  <div id="hata"></div>
+
+  <!-- SONUÇ -->
+  <section id="sonuc">
+    <div class="sonuc-inner">
+
+      <div class="banner">
+        <div class="banner-emoji" id="urun-emoji">🍫</div>
+        <div class="banner-meta">
+          <span class="kat-tag" id="urun-kat">—</span>
+          <div class="urun-isim" id="urun-isim">—</div>
+          <div class="urun-acik" id="urun-acik">—</div>
+        </div>
+        <div class="puan-blok">
+          <div class="puan-svg-wrap">
+            <svg viewBox="0 0 72 72" width="72" height="72">
+              <circle class="p-bg"   cx="36" cy="36" r="31"/>
+              <circle class="p-fill" id="p-arc" cx="36" cy="36" r="31"
+                stroke-dasharray="194.8" stroke-dashoffset="194.8"/>
+            </svg>
+            <div class="puan-txt" id="puan-txt">—</div>
+          </div>
+          <div class="puan-lbl">Sağlık Puanı</div>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="panel">
+          <div class="panel-head">
+            <div class="head-ico ico-g">🔬</div>
+            <span class="panel-ttl">İçerik Analizi</span>
+          </div>
+          <div class="panel-body" id="analiz-body"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <div class="head-ico ico-p">🌿</div>
+            <span class="panel-ttl">Ne Yiyebilirsiniz?</span>
+          </div>
+          <div class="panel-body" id="alt-body"></div>
+        </div>
+      </div>
+
+      <div class="tekrar-row">
+        <button id="tekrar-btn" onclick="temizle()">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+            <path d="M8 2L3.5 6.5 8 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Yeni ürün ara
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <footer>İçeriks · Bilgi amaçlıdır, tıbbi tavsiye değildir.</footer>
+
+  <script>
+    const KEY = "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";
+
+    async function groqJSON(sys, usr, temp) {
+      const r = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type":"application/json", "Authorization":`Bearer ${KEY}` },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          temperature: temp || 0.3,
+          messages: [{ role:"system", content:sys }, { role:"user", content:usr }]
+        })
+      });
+      if (!r.ok) { const e = await r.json(); throw new Error(e.error?.message || "API hatası"); }
+      const d = await r.json();
+      return JSON.parse(d.choices[0].message.content.trim().replace(/```json|```/g,"").trim());
+    }
+
+    async function analiz() {
+      const input = document.getElementById("urun-input").value.trim();
+      if (!input) { gosterHata("Lütfen bir ürün adı girin."); return; }
+
+      gizleHepsi();
+      document.getElementById("analiz-btn").disabled = true;
+      document.getElementById("yukleniyor").style.display = "flex";
+      const hero = document.getElementById("hero");
+      hero.style.minHeight = "auto";
+      hero.style.paddingBottom = "36px";
+
+      const sys = `Sen bir gıda içerik analisti yapay zekasısın. Kullanıcı bir ürün adı gönderir. O ürünün içindekiler listesini bilgine dayanarak belirle. SADECE JSON döndür, başka hiçbir şey yok.
+{
+  "urun_adi":"tam ürün adı",
+  "kategori":"Bisküvi / Enerji İçeceği / Cips vb.",
+  "emoji":"tek emoji",
+  "saglik_puani":65,
+  "genel_aciklama":"Kısa dürüst Türkçe değerlendirme 1-2 cümle.",
+  "icerikler":[
+    {"ad":"E621 (MSG)","risk":"yuksek","aciklama":"Tat arttırıcı, yüksek dozda sinir sistemi üzerinde etkili."},
+    {"ad":"E330 (Sitrik Asit)","risk":"orta","aciklama":"Asitlik düzenleyici, diş minesi için olumsuz etki."},
+    {"ad":"Buğday Unu","risk":"guvenli","aciklama":"Temel tahıl bileşeni."}
+  ]
+}
+risk: "yuksek" | "orta" | "guvenli". saglik_puani 0-100.`;
+
+      try {
+        const s = await groqJSON(sys, `Ürün: ${input}`, 0.2);
+        gosterSonuc(s);
+        alternatif(s);
+      } catch(e) {
+        gosterHata("Analiz sırasında bir hata oluştu: " + e.message);
+      } finally {
+        document.getElementById("yukleniyor").style.display = "none";
+        document.getElementById("analiz-btn").disabled = false;
+      }
+    }
+
+    async function alternatif(s) {
+      const ab = document.getElementById("alt-body");
+      ab.innerHTML = `<div class="alt-loading"><div class="mini-ring"></div>Öneriler hazırlanıyor…</div>`;
+
+      const sys = `Sen bir beslenme danışmanısın. Kullanıcı bir gıda ürününün analizini verir. O ürünün yerine tüketilebilecek 2-3 GERÇEKÇI, PRATİK alternatif önerirsin.
+
+Temel prensipler:
+- Öneriler somut ve Türkiye'de kolayca bulunabilir olmalı.
+- Her öneri kısa ama bilgilendirici olmalı: "neden daha iyi" somut şekilde belirtilmeli (örn: "şeker içermez", "%70+ kakao", "katkısız", "daha az sodyum").
+- Marka önerisi yapılabilir ama genel kategoriler de geçerlidir.
+- "Evde hazırla" önerisi SADECE gerçekten çok basit ve pratikse kullan.
+- Enerji içeceği → kafeinli ama doğal alternatifler; cips → daha az işlenmiş veya fırınlanmış; çikolata → bitter; şekerleme → kuru meyve veya kuruyemiş vb.
+- Kapanış cümlesi kısa, sıcak ve doğal Türkçe olsun.
+
+SADECE JSON döndür:
+{"alternatifler":[{"emoji":"...","ad":"...","neden":"..."}],"kapanıs":"..."}`;
+
+      const bilgi = `Ürün: ${s.urun_adi} (${s.kategori})
+Sağlık puanı: ${s.saglik_puani}/100
+Riskli: ${(s.icerikler||[]).filter(i=>i.risk==="yuksek").map(i=>i.ad).join(", ")||"yok"}
+Orta riskli: ${(s.icerikler||[]).filter(i=>i.risk==="orta").map(i=>i.ad).join(", ")||"yok"}`;
+
+      try {
+        const alt = await groqJSON(sys, bilgi, 0.55);
+        let html = "";
+        (alt.alternatifler||[]).forEach(a => {
+          html += `<div class="alt-item">
+            <div class="alt-em">${gv(a.emoji||"🥗")}</div>
+            <div><div class="alt-ad">${gv(a.ad)}</div><div class="alt-neden">${gv(a.neden)}</div></div>
+          </div>`;
+        });
+        if (alt.kapanıs) html += `<div class="alt-kapanıs">${gv(alt.kapanıs)}</div>`;
+        ab.innerHTML = html;
+      } catch {
+        ab.innerHTML = `<p style="font-size:.8rem;color:var(--t3);padding:8px 0;">Öneri yüklenemedi.</p>`;
+      }
+    }
+
+    function gosterSonuc(v) {
+      document.getElementById("urun-emoji").textContent = v.emoji || "🍽";
+      document.getElementById("urun-isim").textContent  = v.urun_adi || "—";
+      document.getElementById("urun-kat").textContent   = v.kategori || "Gıda";
+      document.getElementById("urun-acik").textContent  = v.genel_aciklama || "";
+
+      const puan  = Math.max(0, Math.min(100, parseInt(v.saglik_puani)||0));
+      const circ  = 194.8;
+      const offset = circ - (puan/100)*circ;
+      const arc  = document.getElementById("p-arc");
+      const txt  = document.getElementById("puan-txt");
+
+      let renk = "#7BAE7F";
+      if (puan < 40) renk = "#C94040";
+      else if (puan < 70) renk = "#D4763A";
+      arc.style.stroke = renk;
+      txt.style.color  = renk;
+
+      setTimeout(() => { arc.style.strokeDashoffset = offset; txt.textContent = "%" + puan; }, 80);
+
+      const riskli  = (v.icerikler||[]).filter(i=>i.risk==="yuksek");
+      const orta    = (v.icerikler||[]).filter(i=>i.risk==="orta");
+      const guvenli = (v.icerikler||[]).filter(i=>i.risk==="guvenli");
+
+      let html = "";
+      if (riskli.length)  html += grup("Yüksek Riskli", riskli,  "r");
+      if (orta.length)    html += grup("Orta Riskli",   orta,    "o");
+      if (guvenli.length) html += grup("Güvenli",       guvenli, "g");
+      if (!html) html = `<p style="font-size:.84rem;color:var(--t3);">İçerik bilgisi bulunamadı.</p>`;
+
+      document.getElementById("analiz-body").innerHTML = html;
+      document.getElementById("sonuc").style.display = "block";
+
+      setTimeout(() => document.getElementById("sonuc").scrollIntoView({ behavior:"smooth", block:"start" }), 100);
+    }
+
+    function grup(lbl, maddeler, t) {
+      const dc = {r:"d-r", o:"d-o", g:"d-g"}[t];
+      const bc = {r:"b-r", o:"b-o", g:"b-g"}[t];
+      const et = {r:"Yüksek Risk", o:"Orta Risk", g:"Güvenli"}[t];
+      let s = `<div class="grup"><div class="grup-lbl">${gv(lbl)}</div>`;
+      maddeler.forEach(m => {
+        s += `<div class="satir">
+          <span class="dot ${dc}"></span>
+          <div class="satir-ic">
+            <div class="satir-ad">${gv(m.ad)}</div>
+            <div class="satir-acik">${gv(m.aciklama||"")}</div>
+          </div>
+          <span class="bdg ${bc}">${et}</span>
+        </div>`;
+      });
+      return s + "</div>";
+    }
+
+    function gv(s) {
+      return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    }
+
+    function gosterHata(msg) {
+      const el = document.getElementById("hata");
+      el.textContent = msg; el.style.display = "block";
+    }
+
+    function gizleHepsi() {
+      document.getElementById("sonuc").style.display = "none";
+      document.getElementById("hata").style.display  = "none";
+    }
+
+    function temizle() {
+      gizleHepsi();
+      const hero = document.getElementById("hero");
+      hero.style.minHeight = "100vh";
+      hero.style.paddingBottom = "70px";
+      document.getElementById("urun-input").value = "";
+      window.scrollTo({ top:0, behavior:"smooth" });
+      setTimeout(() => document.getElementById("urun-input").focus(), 400);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("urun-input").addEventListener("keydown", e => {
+        if (e.key === "Enter") analiz();
+      });
+    });
+  </script>
+</body>
+</html>
